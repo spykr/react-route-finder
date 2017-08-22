@@ -1,0 +1,542 @@
+@import 'variables';
+
+html,
+body,
+.root,
+.c-app {
+  height: 100%;
+  width: 100%;
+}
+
+.c-app {
+  background-color: $color-bg;
+  color: $color-text;
+  font-family: $font-main;
+}
+
+.u-flex {
+  display: flex;
+}
+
+.u-flex-columns {
+  display: flex;
+  flex-direction: column;
+}
+
+.u-flex-center {
+  align-items: center;
+  display: flex;
+}
+
+.u-flex-center-all {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+}
+
+.u-truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.u-link {
+  border-bottom: 1px solid rgba( $white, .4 );
+  color: $white;
+  text-decoration: none;
+  transition: border-color .2s;
+
+  &:hover {
+    border-color: rgba( $white, .8 );
+  }
+}
+
+.c-header {
+  background-color: $color-header;
+  box-shadow: $shadow-header;
+  color: $color-text-header;
+  flex-shrink: 0;
+  font-family: $font-logo;
+  font-size: 24px;
+  justify-content: space-between;
+  letter-spacing: .6px;
+  z-index: 99;
+
+  &__link {
+    color: $color-text-header;
+    padding: 10px;
+    text-decoration: none;
+    transition: padding .1s;
+
+    @include tablet-and-desktop {
+      padding: 15px;
+    }
+  }
+
+  &__icon {
+    font-size: 24px;
+    margin-left: -5px;
+  }
+
+  &__button {
+    background-color: darken( $color-header, 2% );
+    border-left: 1px solid rgba( $white, .1 );
+    cursor: pointer;
+    padding: 0 5px;
+    transition: background-color .1s ease;
+
+    @include tablet-and-desktop {
+      padding: 0 10px;
+    }
+
+    &:hover,
+    &:focus,
+    &:active {
+      background-color: darken( $color-header, 3% );
+    }
+  }
+}
+
+.c-wrapper {
+  height: calc( 100% - 47px );
+  position: relative;
+
+  @include tablet-and-desktop {
+    height: calc( 100% - 57px );
+  }
+}
+
+.c-loading {
+  background: $color-loading-overlay;
+  bottom: 0;
+  left: 0;
+  pointer-events: none;
+  position: absolute;
+  right: 0;
+  top: 0;
+  z-index: 99;
+
+  $loading-size: 80px;
+
+  &__background {
+    background: $white;
+    border-radius: 50%;
+    box-shadow: $shadow-box;
+    height: $loading-size;
+    width: $loading-size;
+  }
+
+  &__icon {
+    height: $loading-size - 10px;
+    padding: 5px;
+    width: $loading-size - 10px;
+
+    path {
+      fill: $color-dark;
+    }
+  }
+}
+
+.c-button {
+  background: $gradient-button;
+  border: 0;
+  border-radius: 4px;
+  box-shadow: $shadow-box;
+  color: $color-text-button;
+  cursor: pointer;
+  flex-basis: 41%;
+  font-family: $font-main;
+  font-size: 18px;
+  letter-spacing: .3px;
+  margin: 3px;
+  margin-top: 5px;
+  padding: 12px;
+
+  @include small-phone {
+    font-size: 15px;
+    padding: 10px 8px;
+  }
+
+  &--blue {
+    background: $gradient-button-other;
+    flex-basis: 37%;
+  }
+
+  &--red {
+    background: $gradient-button-red;
+    flex-basis: 22%;
+  }
+
+  &--fill {
+    flex-basis: 100%;
+    font-size: 18px !important;
+    padding: 12px !important;
+  }
+}
+
+.c-options {
+  color: $color-text-destination;
+  cursor: pointer;
+  justify-content: space-between;
+  padding: 6px;
+
+  &__home-icon {
+    font-size: 22px;
+    margin-left: -3px;
+    margin-right: 3px;
+  }
+
+  &__home-label {
+    background: 0;
+    border: 0;
+    border-bottom: 1px solid rgba( $color-text-destination, .6 );
+    color: $color-text-destination;
+    font-family: $font-main;
+    font-size: 16px;
+    letter-spacing: .3px;
+    margin-right: auto;
+    padding: 5px 0;
+    width: 100%;
+
+    @include small-phone {
+      font-size: 15px;
+    }
+
+    &::-webkit-input-placeholder {
+      color: $color-text-destination;
+      opacity: .75;
+    }
+  }
+
+  &__optimise-label {
+    color: $color-text-destination;
+    cursor: pointer;
+    flex-shrink: 0;
+    font-size: 16px;
+    padding: 5px;
+
+    @include max-width( 320px ) {
+      font-size: 14px;
+    }
+
+    @include small-phone {
+      font-size: 15px;
+    }
+  }
+
+  &__optimise-checkbox {
+    cursor: pointer;
+    margin-right: 5px;
+  }
+}
+
+.c-autocomplete {
+  background-color: rgba( $color-search, 1 );
+  border-radius: 0 0 4px 4px;
+  box-shadow: $shadow-box;
+  font-size: 14px;
+  position: absolute;
+  z-index: 99999;
+
+  &__item {
+    background: none;
+    border-bottom: 1px solid rgba( $black, .05 );
+    color: $color-text-destination;
+    cursor: pointer;
+    padding: 10px;
+
+    &--active {
+      background-color: rgba( $black, .06 );
+    }
+  }
+
+  &__logo-container {
+    padding: 5px;
+    text-align: right;
+  }
+
+  &__logo-image {
+    max-height: 20px;
+  }
+}
+
+.c-search {
+  $s: &;
+  background-color: $color-search;
+  box-shadow: $shadow-box;
+  box-sizing: border-box;
+  flex-shrink: 0;
+  left: 5px;
+  padding: 0;
+  position: absolute;
+  right: 5px;
+  top: 5px;
+  transition: left $anim-search,
+              right $anim-search,
+              top $anim-search,
+              bottom $anim-search,
+              height $anim-search,
+              width $anim-search;
+  z-index: 9;
+
+  @include tablet-and-desktop {
+    border-radius: 4px;
+    bottom: auto;
+    left: 10px;
+    position: absolute;
+    top: 10px;
+    width: 480px;
+  }
+
+  &__boxes {
+    flex-wrap: wrap;
+  }
+
+  &__box {
+    box-sizing: border-box;
+    flex-basis: 50%;
+    flex-grow: 1;
+    padding: 3px;
+
+    @include tablet-and-desktop {
+      padding: 4px;
+    }
+  }
+
+  &__root {
+    flex-grow: 1;
+  }
+
+  &__number {
+    background-color: $color-address-border;
+    border-radius: 4px 0 0 4px;
+    color: $white;
+    flex-shrink: 0;
+    font-size: 16px;
+    font-weight: 700;
+    height: 100%;
+    width: 26px;
+    z-index: 2;
+
+    @include small-phone {
+      font-size: 14px;
+      width: 24px;
+    }
+  }
+
+  &__input {
+    border: 1px solid $color-address-border;
+    border-radius: 0 4px 4px 0;
+    box-sizing: border-box;
+    color: $color-text-destination;
+    font-family: $font-main;
+    font-size: 16px;
+    letter-spacing: .5px;
+    padding: 8px;
+    text-overflow: ellipsis;
+    width: 100%;
+
+    @include small-phone {
+      font-size: 15px;
+    }
+
+    &::-webkit-input-placeholder {
+      color: $color-text-destination;
+      opacity: .75;
+    }
+  }
+
+  &__checkboxes {
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 3px;
+  }
+
+  &--minimised {
+    .c-options {
+      display: none;
+    }
+
+    #{$s}__box {
+      padding: 3px;
+    }
+
+    #{$s}-wrapper {
+      padding: 5px;
+      pointer-events: none;
+    }
+
+    #{$s}__buttons {
+      display: none;
+    }
+
+    #{$s}__checkboxes {
+      display: none;
+    }
+
+    #{$s}__input {
+      background: none;
+      border: 0;
+      color: $color-text;
+      font-size: 15px;
+      padding: 4px;
+    }
+
+    #{$s}__number {
+      border-radius: 50%;
+      font-size: 13px;
+      height: 22px;
+      width: 22px;
+    }
+  }
+}
+
+.c-search-wrapper {
+  border-top: 0;
+  padding: 5px;
+
+  @include tablet-and-desktop {
+    border-radius: 0 0 4px 4px;
+    padding: 6px;
+  }
+}
+
+.c-search-header {
+  background-color: $color-search-header;
+  border-radius: 4px 4px 0 0;
+  color: $white;
+  cursor: pointer;
+  padding: 10px;
+
+  &__icon {
+    font-size: 17px;
+    margin-left: -5px;
+    margin-right: -3px;
+
+    @include tablet-and-desktop {
+      font-size: 19px;
+    }
+  }
+
+  &__name {
+    font-size: 17px;
+
+    @include tablet-and-desktop {
+      font-size: 19px;
+    }
+  }
+
+  &__hide {
+    font-size: 18px;
+    margin-left: auto;
+    margin-right: -3px;
+  }
+}
+
+.c-map-container {
+  flex-basis: 100%;
+}
+
+.c-map {
+  height: 100%;
+}
+
+.c-modal {
+  background-color: $color-modal;
+  bottom: 0;
+  height: 100%;
+  left: 0;
+  opacity: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+  transition: opacity .2s;
+  width: 100%;
+  z-index: -1;
+
+  &--visible {
+    opacity: 1;
+    z-index: 9999;
+  }
+}
+
+.c-info {
+  background-color: $color-info;
+  border-radius: 4px;
+  box-shadow: $shadow-box;
+  box-sizing: border-box;
+  color: $white;
+  margin: 20px;
+  max-width: 300px;
+  text-align: center;
+  width: 100%;
+
+  &__header {
+    background-color: rgba( $black, .1 );
+    border-radius: 4px 4px 0 0;
+    font-family: $font-logo;
+    font-size: 18px;
+    justify-content: space-between;
+    letter-spacing: .6px;
+    margin: 0;
+    margin-bottom: 5px;
+    padding: 12px;
+  }
+
+  &__heading {
+    align-self: center;
+    background-color: rgba( $black, .08 );
+    border-radius: 4px;
+    font-size: 15px;
+    letter-spacing: .6px;
+    margin: 3px 0;
+    padding: 10px;
+    width: 100px;
+  }
+
+  &__footer {
+    background-color: rgba( $black, .08 );
+    border-radius: 0 0 4px 4px;
+    font-size: 14px;
+    letter-spacing: .6px;
+    margin: 0;
+    margin-top: 5px;
+    padding: 10px;
+    text-align: right;
+  }
+
+  &__close {
+    cursor: pointer;
+    font-size: 18px;
+    margin-right: -5px;
+  }
+
+  &__category {
+    font-size: 15px;
+    letter-spacing: .3px;
+    line-height: 1.3;
+    padding: 3px 10px;
+
+    &--wrap {
+      flex-wrap: wrap;
+    }
+  }
+
+  &__text {
+    margin: 0;
+    padding: 5px;
+
+    &--sub {
+      font-size: 13px;
+      letter-spacing: .3px;
+      line-height: 1.5;
+      padding-top: 1px;
+    }
+  }
+
+  &__link {
+    flex-shrink: 0;
+    margin: 4px;
+    padding: 1px;
+  }
+}

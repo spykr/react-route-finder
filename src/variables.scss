@@ -1,0 +1,86 @@
+$white: #fff;
+$black: #000;
+
+$color-google-maps: #ebe8de;
+$color-primary: #0277bd;
+$color-dark: #01579b;
+$color-lighter: #fb8c00;
+$color-accent: #e1f5fe;
+
+$color-bg: $color-google-maps;
+$color-header: $color-dark;
+$color-search: rgba( $white, .8 );
+$color-search-header: $color-primary;
+$color-address-border: $color-primary;
+$color-loading-overlay: rgba( $black, .4 );
+$color-modal: rgba( $black, .5 );
+$color-info: $color-header;
+
+$color-button: #43a047;
+$color-button-red: #d50000;
+
+$gradient-button: linear-gradient( $color-button, darken( $color-button, 5% ) );
+$gradient-button-other: linear-gradient( $color-primary, darken( $color-primary, 5% ) );
+$gradient-button-red: linear-gradient( $color-button-red, darken( $color-button-red, 5% ) );
+
+$color-text: #333;
+$color-text-header: #f9f9f9;
+$color-text-button: $white;
+$color-text-destination: $color-dark;
+
+$font-logo: 'Asap Condensed';
+$font-main: 'Oswald';
+
+$anim-search: .3s;
+
+$shadow-box: 0 1px 3px rgba( $black, .1 );
+$shadow-header: 0 1px 3px rgba( $black, .25 );
+
+$width-small-phone: 420px;
+$width-tablet: 550px;
+$width-desktop: 900px;
+
+@mixin small-phone {
+  @media ( max-width: #{$width-small-phone} )
+  {
+    @content;
+  }
+}
+
+@mixin phone {
+  @media ( min-width: #{width-small-phone + 1px} ) and ( max-width: #{width-tablet - 1px} )
+  {
+    @content;
+  }
+}
+
+@mixin tablet {
+  @media ( min-width: #{$width-tablet} ) and ( max-width: #{$width-desktop - 1px} )
+  {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media ( min-width: #{$width-desktop} )
+  {
+    @content;
+  }
+}
+
+@mixin tablet-and-desktop {
+  @include tablet {
+    @content;
+   }
+
+  @include desktop {
+    @content;
+   }
+}
+
+@mixin max-width( $s ) {
+  @media ( max-width: #{$s} )
+  {
+    @content;
+  }
+}
